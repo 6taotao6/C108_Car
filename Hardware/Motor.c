@@ -72,6 +72,6 @@ void Motor_Handle(void)
 	Turn_PWM = Range_Protect(Turn_PWM, -70, 70);
 
 	//	Motor_Control(Speed+Turn_PWM,Speed-Turn_PWM);
-	//Motor_Control(Speed-Turn_PWM, (Speed+Turn_PWM)*1.1);
-	Motor_Control(20, 20);
+	Motor_Control(Speed-Turn_PWM, (Speed+Turn_PWM));
+	//Motor_Control(20, 20);
 }
