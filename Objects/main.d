@@ -38,3 +38,5 @@
 .\objects\main.o: .\Hardware\PID.h
 .\objects\main.o: .\Hardware\Timer.h
 .\objects\main.o: .\Hardware\PWM.h
+.\objects\main.o: .\Hardware\HC05.h
+.\objects\main.o: E:\Keil_v5\ARM\ARMCC\Bin\..\include\stdlib.h

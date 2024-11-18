@@ -4,19 +4,28 @@ uint8_t KeyNum;
 
 uint16_t TIM_10ms; // 全局计数
 
+uint8_t RxSTA = 1;
+char move_mode[1];
 char txt[20];
+uint8_t status=0;
 int main(void)
 {
 	OLED_Init();
 	Motor_Init();
 	AD_Init();
 	Timer_Init();
+	HC05_Init();
 	PID_Parameter_Init(&TurnPID); // 速度PID结构体初始化
 
 	//	OLED_ShowString(1, 1, "Speed:");
 
 	while (1)
 	{
+		HC05_GetData(move_mode);
+		if (strcmp(move_mode, "s") == 0) //
+		{
+			status=1;
+		}
 //		OLED_ShowString(1, 1, "LX");
 //		OLED_ShowNum(1, 3, AD0[ADC_DATA], 4);
 //		
@@ -70,6 +79,8 @@ void TIM2_IRQHandler(void) // 10ms
 {
 	if (TIM_GetITStatus(TIM2, TIM_IT_Update) == SET)
 	{
+		if(!status) return;
+		
 		TIM_10ms++;
 
 		ADC_Handle();

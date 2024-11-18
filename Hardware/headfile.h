@@ -11,6 +11,9 @@
 #include "PID.h"
 #include "Timer.h"
 #include "PWM.h"
+#include "HC05.h"
+#include "stdlib.h"
+
 
 #endif
 
